@@ -6,14 +6,16 @@ function calcRVG(streitwert: integer):integer;
 
 implementation
 
+// Funktion um die Einfachgebühr zu berechnen
+
 function calcRVG(streitwert: integer):integer;
 var
   currentSW, ergebnis: integer;
 begin
   currentSW:= 501;   // Zwischenstand: Streitwert
-  ergebnis:= 45;     // Basisgeb�hr
+  ergebnis:= 45;     // Basisgebühr
 
-  while currentSW <= streitwert do
+  while currentSW <= streitwert do  // bis der angegebene Streitwert erreicht ist
   begin
     case currentSW of
       501..2000:
