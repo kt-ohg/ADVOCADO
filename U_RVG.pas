@@ -7,7 +7,6 @@ function calcRVG(streitwert: integer):integer;
 implementation
 
 // Funktion um die Einfachgebühr zu berechnen
-
 function calcRVG(streitwert: integer):integer;
 var
   currentSW, ergebnis: integer;
