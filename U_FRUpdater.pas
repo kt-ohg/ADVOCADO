@@ -15,7 +15,8 @@ type
       procedure updateFR;
       function readFR:real;
 
-      function HasInternet: Boolean;
+      function HasInternet: boolean;
+      function FileExist: boolean;
 
       constructor Create(URL, FileName: string);
 
@@ -67,7 +68,7 @@ begin
 end;
 
 // Überprüfen, ob Verbindung zur API besteht
-function TFRUpdater.HasInternet: Boolean;
+function TFRUpdater.HasInternet: boolean;
 var
   HTTP: TIdHTTP;
 begin
@@ -82,6 +83,12 @@ begin
   finally
     HTTP.free;
   end;
+end;
+
+// Überprüfen, ob der Leitzins schon im aktuellen Verzeichnis gespeichert ist
+function TFRUpdater.FileExist: boolean;
+begin
+  result:= FileExists(FFileName);
 end;
 
 function TFRUpdater.GetPage(aURL: string): string;
@@ -107,7 +114,5 @@ begin
     Response.Free;
   end;
 end;
-
-
 
 end.
