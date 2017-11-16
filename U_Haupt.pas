@@ -3,16 +3,23 @@ unit U_Haupt;
 interface
 
 uses
+  U_FRUpdater, U_RVG,
+
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, U_FRUpdater,
-  FMX.StdCtrls;
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Controls.Presentation, FMX.Edit, FMX.EditBox, FMX.NumberBox;
 
 type
   TFrmHaupt = class(TForm)
     BtnLeitzins: TButton;
     LblLeitzins: TLabel;
+    LblEditStreitwert: TLabel;
+    BtnRVG: TButton;
+    LblRVG: TLabel;
+    EdtStreitwert: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure BtnLeitzinsClick(Sender: TObject);
+    procedure BtnRVGClick(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -28,6 +35,14 @@ var
 implementation
 
 {$R *.fmx}
+
+procedure TFrmHaupt.BtnRVGClick(Sender: TObject);
+begin
+  if EdtStreitwert.Text <> '' then
+  begin
+    LblRVG.Text:= IntToStr(calcRVG(StrToInt(EdtStreitwert.Text))) + '€';
+  end;
+end;
 
 procedure TFrmHaupt.FormCreate(Sender: TObject);
 begin
